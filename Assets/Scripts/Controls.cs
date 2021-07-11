@@ -7,21 +7,23 @@ public class Controls : MonoBehaviour
 {
     public GameObject mesh;
     public float rotationSpeed = 1.0f;
+
     public float xMin = -1.0f;
     public float xMax = 1.0f;
     public float yMin = 0.5f;
     public float yMax = 3.0f;
     public float zMin = -1.0f;
 
+    public float scaleMin = 0.2f;
+    public float scaleMax = 2.0f;
+
     //keep the original values for position, rotation and scale on start.
     private Vector3 startPos;
     private Quaternion startRot;
     private Vector3 startScale;
 
-    private bool isRotating = false;
-    private Vector3 mouseReference;
-    private Vector3 mouseOffset;
-    private Vector3 rotation;
+    private float startFingerDistance;
+    private Vector3 startingScale;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,6 @@ public class Controls : MonoBehaviour
 
         if(Input.touchCount > 0)
         {
-            isRotating = false;
             Touch touch = Input.GetTouch(0);
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -72,28 +73,25 @@ public class Controls : MonoBehaviour
             }
             if(Input.touchCount == 2)
             {
-                isRotating = true;
-                touch = Input.GetTouch(1);
-                ray = Camera.main.ScreenPointToRay(touch.position);
-                if(touch.phase == TouchPhase.Moved)
+                Touch touchOne = Input.GetTouch(1);
+                if(touch.phase == TouchPhase.Began || touchOne.phase == TouchPhase.Began)
                 {
-                    //Check to see if the second finger hit the gameobject. If it did, rotate the gameobject on the Y axis.
-                    if(Physics.Raycast(ray, out hit, 100.0f))
-                    {
-                        if(hit.transform.CompareTag("Player"))
-                        {
-                            if (isRotating)
-                            {
-                                mouseOffset = Input.mousePosition - mouseReference;
+                    startFingerDistance = Vector2.Distance(touch.position, touchOne.position);
+                    startingScale = mesh.transform.localScale;
+                }
+                else if (touch.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved)
+                {
+                    var currentFingerDistance = Vector2.Distance(touch.position, touchOne.position);
+                    var scaleFactor = currentFingerDistance / startFingerDistance;
+                    //Debug.Log("ScaleFactor is: " + scaleFactor);
 
-                                rotation.y = -(mouseOffset.x + mouseOffset.y) * rotationSpeed;
+                    mesh.transform.localScale = startingScale * scaleFactor;
 
-                                transform.Rotate(rotation);
-
-                                mouseReference = Input.mousePosition;
-                            }
-                        }
-                    }
+                    //Apply a clamp range to the scale of the object. Default is 0.2 to 2.0.
+                    float xScaleSize = Mathf.Clamp(mesh.transform.localScale.x, scaleMin, scaleMax);
+                    float yScaleSize = Mathf.Clamp(mesh.transform.localScale.y, scaleMin, scaleMax);
+                    float zScaleSize = Mathf.Clamp(mesh.transform.localScale.z, scaleMin, scaleMax);
+                    mesh.transform.localScale = new Vector3(xScaleSize, yScaleSize, zScaleSize);
                 }
             }
         }
