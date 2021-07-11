@@ -39,6 +39,12 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if the gameobject is null, find the gameobject with the player tag.
+        if (!mesh)
+        {
+            mesh = GameObject.FindGameObjectWithTag("Player");
+        }
+
         if (Input.GetKey(KeyCode.Mouse0))
         {
             //Debug the movement inside of unity.

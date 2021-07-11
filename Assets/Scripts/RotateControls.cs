@@ -22,6 +22,12 @@ public class RotateControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if the gameobject is null, find the gameobject with the player tag.
+        if(!mesh)
+        {
+            mesh = GameObject.FindGameObjectWithTag("Player");
+        }
+
         if(Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
