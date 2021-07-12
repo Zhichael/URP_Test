@@ -19,7 +19,7 @@ public class ListOfPrefabs : MonoBehaviour
     private TMP_Dropdown prefabsDropdown;
 
     private Controls controls;
-    private int dropdownCount = 0;
+    //private int dropdownCount = 0;
     private int prefabsCount = 0;
     private int dropdownValue = 0;
     private int previousDropdownValue = 0;
@@ -108,8 +108,8 @@ public class ListOfPrefabs : MonoBehaviour
         prefabsDropdown.ClearOptions();
         prefabsDropdown.AddOptions(prefabNames);
 
-        dropdownCount = prefabsDropdown.options.Count;
-
+        //If I want to have the last item in the list selected, uncomment below.
+        //dropdownCount = prefabsDropdown.options.Count;
         //prefabsDropdown.value = dropdownCount - 1;
         ChoosePrefabToInstatiate();
 
