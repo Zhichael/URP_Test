@@ -71,7 +71,7 @@ public class ListOfPrefabs : MonoBehaviour
                 controls.ResetGameObject(2);
 
                 //Instantiates the selected prefab based on the dropdown value from the dropdown list.
-                currentGameObject = Instantiate(prefabs[dropdownValue], prefabHolder.transform.position, Quaternion.identity) as GameObject;
+                currentGameObject = Instantiate(prefabs[dropdownValue], prefabHolder.transform.position, prefabHolder.transform.localRotation) as GameObject;
 
                 currentGameObject.transform.parent = prefabHolder.transform;
             }
