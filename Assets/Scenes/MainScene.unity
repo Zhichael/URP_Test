@@ -13265,6 +13265,7 @@ GameObject:
   - component: {fileID: 1839522772}
   - component: {fileID: 1839522771}
   - component: {fileID: 1839522773}
+  - component: {fileID: 1839522774}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13321,6 +13322,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetHolder: {fileID: 52767569}
+--- !u!114 &1839522774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839522770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b273503457a294b5f9c14c8264d02ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalVolume: {fileID: 1593990730}
+  isBloom: {fileID: 0}
+  bloomThreshold: {fileID: 0}
+  bloomIntensity: {fileID: 0}
+  bloomScatter: {fileID: 0}
+  bloomColors: []
+  bloomClamp: {fileID: 0}
+  bloomSkipInterations: {fileID: 0}
+  bloomDirtIntensity: {fileID: 0}
 --- !u!1 &1870174201
 GameObject:
   m_ObjectHideFlags: 0
