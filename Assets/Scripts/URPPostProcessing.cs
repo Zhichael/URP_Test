@@ -178,8 +178,8 @@ public class URPPostProcessing : MonoBehaviour
                 Color32 rgb = new Color32(rSlider, gSlider, bSlider, alpha);
                 vignette.color.value = rgb;
 
-                float xCenter = float.Parse(ldCenterX.text);
-                float yCenter = float.Parse(ldCenterY.text);
+                float xCenter = float.Parse(vigCenterX.text);
+                float yCenter = float.Parse(vigCenterY.text);
                 vignette.center.value = new Vector2(xCenter, yCenter);
 
                 vignette.intensity.value = vigIntensity.value;
