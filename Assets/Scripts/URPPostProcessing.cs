@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using TMPro;
-using System.Globalization;
 
 public class URPPostProcessing : MonoBehaviour
 {
@@ -51,7 +48,7 @@ public class URPPostProcessing : MonoBehaviour
     public Slider vigIntensity;
     public Slider vigSmoothness;
     public Toggle vigRounded;
-
+    
     private void Start()
     {
         if (globalVolume.profile.TryGet<Bloom>(out var bloom))
@@ -64,7 +61,6 @@ public class URPPostProcessing : MonoBehaviour
                 bloomDirtIntensityObj.SetActive(true);
                 bloomDirtIntensity.text = bloom.dirtIntensity.value.ToString();
             }
-
         }
     }
 
@@ -72,23 +68,10 @@ public class URPPostProcessing : MonoBehaviour
     void Update()
     {
         EditBloom();
-        /*
-        if(isChromatic.isOn)
-        {
-            EditChromatic();
-        }
-        if(isColorAdjust.isOn)
-        {
-            EditColorAdjustment();
-        }
-        if(isLensDistortion.isOn)
-        {
-            EditLensDistortion();
-        }
-        if(isVignette.isOn)
-        {
-            EditVignette();
-        }*/
+        EditChromatic();
+        EditColorAdjustment();
+        EditLensDistortion();
+        EditVignette();
     }
 
     public void EditBloom()
@@ -169,7 +152,7 @@ public class URPPostProcessing : MonoBehaviour
             {
                 lensDis.intensity.value = ldIntensity.value;
                 lensDis.xMultiplier.value = ldXMultiplier.value;
-                lensDis.xMultiplier.value = ldYMultiplier.value;
+                lensDis.yMultiplier.value = ldYMultiplier.value;
 
                 float xCenter = float.Parse(ldCenterX.text);
                 float yCenter = float.Parse(ldCenterY.text);

@@ -1,7 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+
+/*
+ * 
+ * I use this code for the post processing picking too... Redundant to make the same code again. I should probably rename some of these properties and values below...
+ * 
+ */
 
 public class PickALight : MonoBehaviour
 {
