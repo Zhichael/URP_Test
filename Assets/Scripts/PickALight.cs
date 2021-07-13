@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class PickALight : MonoBehaviour
 {
     public GameObject lightBtnHolder;
+    public GameObject oppositeButton;
     public GameObject[] lights;
     public Image showHideBtnImage;
     public Sprite[] lightSprites;
@@ -47,6 +48,21 @@ public class PickALight : MonoBehaviour
             isShowing = false;
         }
         else
+        {
+            lightBtnHolder.SetActive(false);
+            showHideBtnImage.sprite = lightSprites[1];
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].SetActive(false);
+            }
+            lightOn = false;
+            isShowing = true;
+        }
+    }
+
+    public void CheckIfOppositeButtonOn()
+    {
+        if(oppositeButton.activeInHierarchy)
         {
             lightBtnHolder.SetActive(false);
             showHideBtnImage.sprite = lightSprites[1];
