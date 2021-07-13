@@ -20,6 +20,7 @@ public class URPPostProcessing : MonoBehaviour
     public TMP_InputField bloomClamp;
     public Slider bloomSkipInterations;
     public TMP_InputField bloomDirtIntensity;
+    public GameObject bloomDirtIntensityObj;
 
     [Header("Chromatic Aberration")]
     public Toggle isChromatic;
@@ -51,13 +52,27 @@ public class URPPostProcessing : MonoBehaviour
     public Slider vigSmoothness;
     public Toggle vigRounded;
 
+    private void Start()
+    {
+        if (globalVolume.profile.TryGet<Bloom>(out var bloom))
+        {
+            bloomThreshold.text = bloom.threshold.value.ToString();
+            bloomIntensity.text = bloom.intensity.value.ToString();
+            bloomClamp.text = bloom.clamp.value.ToString();
+            if (bloom.dirtTexture.value != null)
+            {
+                bloomDirtIntensityObj.SetActive(true);
+                bloomDirtIntensity.text = bloom.dirtIntensity.value.ToString();
+            }
+
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(isBloom.isOn)
-        {
-            EditBloom();
-        }
+        EditBloom();
+        /*
         if(isChromatic.isOn)
         {
             EditChromatic();
@@ -73,7 +88,7 @@ public class URPPostProcessing : MonoBehaviour
         if(isVignette.isOn)
         {
             EditVignette();
-        }
+        }*/
     }
 
     public void EditBloom()
@@ -101,9 +116,8 @@ public class URPPostProcessing : MonoBehaviour
 
                 if(bloom.dirtTexture.value != null)
                 {
-                    bloom.dirtIntensity.value = int.Parse(bloomDirtIntensity.text);
+                    bloom.dirtIntensity.value = float.Parse(bloomDirtIntensity.text);
                 }
-
             }
         }
     }
