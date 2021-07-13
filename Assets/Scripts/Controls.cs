@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Controls : MonoBehaviour
 {
@@ -59,6 +60,10 @@ public class Controls : MonoBehaviour
             {
                 if (touch.phase == TouchPhase.Moved)
                 {
+                    if(EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    {
+                        return;
+                    }
                     //Shoot a raycast out from your mouses position and see if you hit the specific tag. If you do, move the gameobject within the set constrants.
                     if (Physics.Raycast(ray, out hit, 100.0f))
                     {
