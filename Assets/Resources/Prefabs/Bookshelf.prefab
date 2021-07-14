@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &4570502422292118662
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160141143374556185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 1ebf0ee72dc73234284129fc24f42d9c, type: 3}
 --- !u!1 &8904320125044599551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +24,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975466310965873125}
   m_Layer: 0
-  m_Name: NewBookshelf
+  m_Name: Bookshelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2759,6 +2773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f602ab37a9b8ee249875bd8d60b58971, type: 3}
+--- !u!1 &7160141143374556185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 779157807709471434, guid: f602ab37a9b8ee249875bd8d60b58971, type: 3}
+  m_PrefabInstance: {fileID: 7606000924733026003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1557107630133792378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8941339234945327273, guid: f602ab37a9b8ee249875bd8d60b58971, type: 3}

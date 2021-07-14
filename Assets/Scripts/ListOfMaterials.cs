@@ -70,8 +70,7 @@ public class ListOfMaterials : MonoBehaviour
                                             {
                                                 for (int j = 0; j < mesh.materials.Length; j++)
                                                 {
-                                                    Debug.Log("Meshes hit: " + mesh.materials[j]);
-                                                    //mesh.material = mat;
+                                                    //Debug.Log("Meshes hit: " + mesh.materials[j]);
                                                     Material[] newMat = mesh.materials;
                                                     newMat[j] = mat;
                                                     mesh.materials = newMat;
