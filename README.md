@@ -34,5 +34,5 @@ These consists of:
       3. Reset Scale
       4. Reset All
 ### Other Features
-1. Dropdown in the top left corner allows you to switch between different game objects available inside of the Resources/Prefabs folder.
+1. Dropdown in the top right corner allows you to switch between different game objects available inside of the Resources/Prefabs folder.
 2. If you enable Change Material in the bottom right, you will have another dropdown appear below the other and you can switch materials of the gameobject but tapping the subject.
