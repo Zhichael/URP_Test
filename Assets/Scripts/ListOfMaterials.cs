@@ -70,6 +70,7 @@ public class ListOfMaterials : MonoBehaviour
                                             {
                                                 for (int j = 0; j < mesh.materials.Length; j++)
                                                 {
+                                                    //Thought was to change the individual mesh pieces with a tap, but went with just changing the whole thing.
                                                     //Debug.Log("Meshes hit: " + mesh.materials[j]);
                                                     Material[] newMat = mesh.materials;
                                                     newMat[j] = mat;

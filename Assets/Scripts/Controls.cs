@@ -28,6 +28,12 @@ public class Controls : MonoBehaviour
     {
         mesh = this.gameObject;
 
+        //if the gameobject is null, find the gameobject with the player tag.
+        if (!mesh)
+        {
+            mesh = GameObject.FindGameObjectWithTag("Player");
+        }
+
         //save the start values.
         startPos = mesh.transform.position;
         startRot = mesh.transform.rotation;
@@ -37,11 +43,6 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if the gameobject is null, find the gameobject with the player tag.
-        if (!mesh)
-        {
-            mesh = GameObject.FindGameObjectWithTag("Player");
-        }
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -107,23 +108,22 @@ public class Controls : MonoBehaviour
 
     public void ResetGameObject(int reset)
     {
-        if(reset == 0)
+        switch(reset)
         {
-            mesh.transform.position = startPos;
-        }
-        else if(reset == 1)
-        {
-            mesh.transform.localRotation = startRot;
-        }
-        else if(reset == 2)
-        {
-            mesh.transform.localScale = startScale;
-        }
-        else if(reset == 3)
-        {
-            mesh.transform.position = startPos;
-            mesh.transform.localRotation = startRot;
-            mesh.transform.localScale = startScale;
+            case 0:
+                mesh.transform.position = startPos;
+                break;
+            case 1:
+                mesh.transform.localRotation = startRot;
+                break;
+            case 2:
+                mesh.transform.localScale = startScale;
+                break;
+            case 3:
+                mesh.transform.position = startPos;
+                mesh.transform.localRotation = startRot;
+                mesh.transform.localScale = startScale;
+                break;
         }
     }
 }
